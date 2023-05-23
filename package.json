@@ -1,5 +1,5 @@
 {
-  "name": "crm-gt",
+  "name": "hello-world",
   "version": "0.0.0",
   "type": "module",
   "main": "src/server.js",
