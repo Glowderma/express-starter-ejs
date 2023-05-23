@@ -5,7 +5,9 @@
   "main": "src/server.js",
   "private": true,
   "scripts": {
-    "start": "node src/server.js"
+    "start": "node src/server.js",
+    "lint": "eslint \"src/**/*.js\"",
+    "lint:fix": "eslint \"src/**/*.js\" --fix"
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
@@ -14,5 +16,57 @@
     "express": "^4.18.2",
     "jquery": "^3.7.0",
     "winston": "^3.8.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.41.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-sonarjs": "^0.19.0"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "es6": true,
+      "browser": true,
+      "node": true,
+      "jest": true
+    },
+    "extends": [
+      "eslint:recommended",
+      "plugin:import/recommended",
+      "plugin:sonarjs/recommended"
+    ],
+    "plugins": [
+      "import",
+      "sonarjs"
+    ],
+    "rules": {
+      "prefer-const": "error",
+      "semi": 2,
+      "indent": [
+        "error",
+        4
+      ],
+      "brace-style": [
+        "error",
+        "1tbs"
+      ],
+      "sonarjs/cognitive-complexity": [
+        "error",
+        15
+      ],
+      "sonarjs/max-switch-cases": [
+        "error",
+        10
+      ],
+      "sonarjs/no-duplicate-string": [
+        "error",
+        5
+      ],
+      "sonarjs/no-identical-expressions": "error"
+    },
+    "parserOptions": {
+      "ecmaVersion": 13,
+      "sourceType": "module"
+    }
   }
 }
