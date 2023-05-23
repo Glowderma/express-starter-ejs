@@ -1,6 +1,6 @@
 This is a starter template to get started with Express App. 
 
-- It sets up the following:
+It sets up the following:
 - `winston` logger
 - `ejs` view engine
 - `jquery`
