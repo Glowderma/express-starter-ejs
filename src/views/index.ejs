@@ -2,8 +2,19 @@
 <HTML lang="en">
 <head>
     <title> Homepage </title>
+    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
 </head>
 <body>
-<h1>Hello World!</h1>
+<%- include('navbar') %>
+<h1>Welcome!</h1>
+<button id="welcomeBtn">Click Me!</button>
+
+<script src="jquery/jquery.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script>
+    $("#welcomeBtn").on('click', function () {
+        console.log("hi");
+    });
+</script>
 </body>
 </html>

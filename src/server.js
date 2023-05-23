@@ -1,6 +1,6 @@
 import app from './app.js';
-import {api} from "./env.js";
-import logger from "./logger.js";
+import {api} from "./utils/env.js";
+import logger from "./utils/logger.js";
 
 app.listen(api.port, (err) => {
     if (err) {
