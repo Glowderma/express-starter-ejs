@@ -5,5 +5,6 @@ It sets up the following:
 - `ejs` view engine
 - `jquery`
 - `Bootstrap`
+- `eslint`
 
 Feel free to fork it to start a new project. 
