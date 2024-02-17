@@ -20,21 +20,21 @@ app.use("/static", express.static(path.join(dirName, 'public')));
 app.use("/bootstrap", express.static(path.join(dirName, "../node_modules/bootstrap/dist")));
 app.use("/jquery", express.static(path.join(dirName, "../node_modules/jquery/dist")));
 
-if(api.nodeEnv !== "local") {
-    app.use(auth);
-} else {
-    app.use(authLocal);
-}
-
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
     standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
     legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 });
+app.use(limiter);
+
+if(api.nodeEnv !== "local") {
+    app.use(auth);
+} else {
+    app.use(authLocal);
+}
 
 // apply rate limiter to all requests
-app.use(limiter);
 app.use('/', indexRouter);
 app.all('*', function (req, res) {
     res.status(404).json({
