@@ -5,6 +5,7 @@ import indexRouter from './routes/index.routes.js';
 import cors from "cors";
 import {auth, authLocal} from "./middleware/auth.js";
 import {api} from "./utils/env.js";
+import { rateLimit } from 'express-rate-limit';
 
 const app = express();
 const dirName = getDirName(import.meta.url);
@@ -25,6 +26,15 @@ if(api.nodeEnv !== "local") {
     app.use(authLocal);
 }
 
+const limiter = rateLimit({
+    windowMs: 15 * 60 * 1000, // 15 minutes
+    max: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes)
+    standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+    legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+// apply rate limiter to all requests
+app.use(limiter);
 app.use('/', indexRouter);
 app.all('*', function (req, res) {
     res.status(404).json({

@@ -1,5 +1,8 @@
 This template sets up `winston` for logging. `ejs`, `jquery`, and `bootstrap` for view/UI.
+
 Before running this application copy and modify `sample.env` to `.env` file accordingly. 
+
+Regarding `express-rate-limit` see the [doc](https://express-rate-limit.mintlify.app/quickstart/usage)
 
 ### Notes about `@databases/pg-migrations`
 
