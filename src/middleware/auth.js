@@ -1,4 +1,4 @@
-import responseHandler from "../utils/responseHandler.js";
+import responseHandler from "../utils/response.handler.js";
 import {api} from "../utils/env.js";
 import jwt from "jsonwebtoken";
 import jwksRsa from "jwks-rsa";

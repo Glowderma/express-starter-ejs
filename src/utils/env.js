@@ -8,4 +8,26 @@ const api = {
     jwks: process.env.JWKS_URI || "https://example.com/.well-known/jwks.json"
 };
 
-export { api };
+let db = {
+    host: process.env.PGHOST,
+    database: process.env.PGDATABASE,
+    password: process.env.PGPASSWORD,
+    user: process.env.PGUSER,
+    port: process.env.PGPORT
+};
+
+if(api.nodeEnv !== "local") {
+    db = {
+        host: process.env.PGHOST,
+        database: process.env.PGDATABASE,
+        password: process.env.PGPASSWORD,
+        user: process.env.PGUSER,
+        port: process.env.PGPORT,
+        ssl: {
+            rejectUnauthorized: false,
+            ca: process.env.CA_CERT,
+        },
+    };
+}
+
+export { api, db };
