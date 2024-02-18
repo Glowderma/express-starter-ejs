@@ -6,7 +6,7 @@ Regarding `express-rate-limit` see the [doc](https://express-rate-limit.mintlify
 
 ### Notes about `@databases/pg-migrations`
 
-Create a directory for your migrations called `migrations` under `src`. 
+Create a directory for your migrations called `migrations` at the root directory of the project.
 
 In that directory, create a file called: `0001-initial-migration.sql`
 - You can use any number, then a `-` and then any name. 
